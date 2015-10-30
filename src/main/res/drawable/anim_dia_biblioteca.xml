@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:drawable="@drawable/refrany_dia_biblioteca_clickat"
+      android:state_pressed="true" />
+<item android:drawable="@drawable/refrany_dia_boto_biblioteca" />
+</selector>
