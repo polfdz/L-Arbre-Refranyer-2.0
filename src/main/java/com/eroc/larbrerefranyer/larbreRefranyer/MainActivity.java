@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.eroc.larbrerefranyer.R;
+import com.eroc.larbrerefranyer.jocestatic.MenuTradicional;
 import com.eroc.larbrerefranyer.jocestatic.PartidaTradicionalVides;
 import com.eroc.larbrerefranyer.larbreRefranyer.dbRefranys.DatabaseModel;
 import com.eroc.larbrerefranyer.larbreRefranyer.dbRefranys.ParseRefranys;
@@ -66,7 +67,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         pBar.setVisibility(View.GONE);
         tText.setVisibility(View.VISIBLE);
         //tText.setText(+list.size()+" Refranys afegits a la BBDD");
-        tText.setText(+lastId+": Last ID. "+ list.size()+": Refranys afegits a la BBDD");
+        tText.setText(+lastId+": Last ID. "+ list.size()+": Refranys a la BBDD");
         /*for(int i = 0; i< list.size()-1; i++){
             Log.i("DB", list.get(i).getPregunta());
         }*/
@@ -77,7 +78,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.bPartidaTradicional:
-                Intent partida = new Intent(MainActivity.this, PartidaTradicionalVides.class);
+                Intent partida = new Intent(MainActivity.this, MenuTradicional.class);
                 startActivity(partida);
                 break;
         }
