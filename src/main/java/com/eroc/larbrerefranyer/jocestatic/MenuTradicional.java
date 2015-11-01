@@ -4,12 +4,17 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eroc.larbrerefranyer.R;
+import com.eroc.larbrerefranyer.larbreRefranyer.MainActivity;
+import com.eroc.larbrerefranyer.larbreRefranyer.MenuPrincipal;
 
 /**
  * Created by Pol on 05/10/2015.
@@ -19,7 +24,10 @@ public class MenuTradicional extends Activity implements View.OnClickListener{
 
     View vPrimer, vSegon, vTercer, vQuart, vCinque, vSise, vSete, vVuite, vNove; //views as buttons for levels
     View vBloq2, vBloq3, vBloq4, vBloq5, vBloq6, vBloq7, vBloq8, vBloq9; //Views of bloquings
-    SharedPreferences pref;
+    TextView tPunts;
+    ImageButton bBack;
+    SharedPreferences sPrefs, sPunts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,9 +64,18 @@ public class MenuTradicional extends Activity implements View.OnClickListener{
         vBloq8 = (View) findViewById(R.id.vuiteBlock);
         vBloq9 = (View) findViewById(R.id.noveBlock);
 
-        pref = getSharedPreferences("Nivells", 0);
-        controlarBloquejats(pref);
+        //set bloquejos
+        sPrefs = getSharedPreferences("Nivells", 0);
+        controlarBloquejats(sPrefs);
 
+        //set punts usuari
+        tPunts = (TextView) findViewById(R.id.textUserFuller);
+        sPunts = getSharedPreferences("Punts", 0);
+        int puntsUsuari = sPunts.getInt("Punts",0);
+        tPunts.setText(""+puntsUsuari);
+
+        //buttons
+        bBack = (ImageButton) findViewById(R.id.bBack);
     }
 
     public void controlarBloquejats(SharedPreferences _pref)
@@ -101,9 +118,9 @@ public class MenuTradicional extends Activity implements View.OnClickListener{
                 finish();*/
                 break;
             case R.id.bBack:
-                /*Intent back = new Intent(SeleccioNivells.this, MenuPrincipal.class);
+                Intent back = new Intent(MenuTradicional.this, MenuPrincipal.class);
                 startActivity(back);
-                finish();*/
+                finish();
                 break;
             case R.id.layout_fullesUsr:
                 /*Intent perf = new Intent(SeleccioNivells.this, Perfil.class);
@@ -117,8 +134,8 @@ public class MenuTradicional extends Activity implements View.OnClickListener{
                 finish();
                 break;
             case R.id.segon:
-                pref = getSharedPreferences("Nivells", 0);
-                lvl = pref.getString("lvl1", "");
+                sPrefs = getSharedPreferences("Nivells", 0);
+                lvl = sPrefs.getString("lvl1", "");
                 if(!lvl.isEmpty()){
                     partida = new Intent(MenuTradicional.this, PartidaTradicionalVides.class);
                     partida.putExtra("Nivell", 2);
@@ -129,8 +146,8 @@ public class MenuTradicional extends Activity implements View.OnClickListener{
                 }
                 break;
             case R.id.tercer:
-                pref = getSharedPreferences("Nivells", 0);
-                lvl = pref.getString("lvl2", "");
+                sPrefs = getSharedPreferences("Nivells", 0);
+                lvl = sPrefs.getString("lvl2", "");
                 if(!lvl.isEmpty()){
                     partida = new Intent(MenuTradicional.this, PartidaTradicionalVides.class);
                     partida.putExtra("Nivell", 3);
@@ -141,8 +158,8 @@ public class MenuTradicional extends Activity implements View.OnClickListener{
                 }
                 break;
             case R.id.cuart:
-                pref = getSharedPreferences("Nivells", 0);
-                lvl = pref.getString("lvl3", "");
+                sPrefs = getSharedPreferences("Nivells", 0);
+                lvl = sPrefs.getString("lvl3", "");
                 if(!lvl.isEmpty()){
                     partida = new Intent(MenuTradicional.this, PartidaTradicionalVides.class);
                     partida.putExtra("Nivell", 4);
@@ -153,8 +170,8 @@ public class MenuTradicional extends Activity implements View.OnClickListener{
                 }
                 break;
             case R.id.cinque:
-                pref = getSharedPreferences("Nivells", 0);
-                lvl = pref.getString("lvl4", "");
+                sPrefs = getSharedPreferences("Nivells", 0);
+                lvl = sPrefs.getString("lvl4", "");
                 if(!lvl.isEmpty()){
                     partida = new Intent(MenuTradicional.this, PartidaTradicionalVides.class);
                     partida.putExtra("Nivell", 5);
@@ -165,8 +182,8 @@ public class MenuTradicional extends Activity implements View.OnClickListener{
                 }
                 break;
             case R.id.sise:
-                pref = getSharedPreferences("Nivells", 0);
-                lvl = pref.getString("lvl5", "");
+                sPrefs = getSharedPreferences("Nivells", 0);
+                lvl = sPrefs.getString("lvl5", "");
                 if(!lvl.isEmpty()){
                     partida = new Intent(MenuTradicional.this, PartidaTradicionalVides.class);
                     partida.putExtra("Nivell", 6);
@@ -177,8 +194,8 @@ public class MenuTradicional extends Activity implements View.OnClickListener{
                 }
                 break;
             case R.id.sete:
-                pref = getSharedPreferences("Nivells", 0);
-                lvl = pref.getString("lvl6", "");
+                sPrefs = getSharedPreferences("Nivells", 0);
+                lvl = sPrefs.getString("lvl6", "");
                 if(!lvl.isEmpty()){
                     partida = new Intent(MenuTradicional.this, PartidaTradicionalVides.class);
                     partida.putExtra("Nivell", 7);
@@ -189,8 +206,8 @@ public class MenuTradicional extends Activity implements View.OnClickListener{
                 }
                 break;
             case R.id.vuite:
-                pref = getSharedPreferences("Nivells", 0);
-                lvl = pref.getString("lvl7", "");
+                sPrefs = getSharedPreferences("Nivells", 0);
+                lvl = sPrefs.getString("lvl7", "");
                 if(!lvl.isEmpty()){
                     partida = new Intent(MenuTradicional.this, PartidaTradicionalVides.class);
                     partida.putExtra("Nivell", 8);
@@ -201,8 +218,8 @@ public class MenuTradicional extends Activity implements View.OnClickListener{
                 }
                 break;
             case R.id.nove:
-                pref = getSharedPreferences("Nivells", 0);
-                lvl = pref.getString("lvl8", "");
+                sPrefs = getSharedPreferences("Nivells", 0);
+                lvl = sPrefs.getString("lvl8", "");
                 if(!lvl.isEmpty()){
                     partida = new Intent(MenuTradicional.this, PartidaTradicionalVides.class);
                     partida.putExtra("Nivell", 9);
@@ -217,5 +234,10 @@ public class MenuTradicional extends Activity implements View.OnClickListener{
     private void popUpToast(String message){
         Toast toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
         toast.show();
+    }
+    public void onBackPressed(){
+        Intent back = new Intent(this,MenuPrincipal.class);
+        startActivity(back);
+        finish();
     }
 }

@@ -78,7 +78,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.bPartidaTradicional:
-                Intent partida = new Intent(MainActivity.this, MenuTradicional.class);
+                Intent partida = new Intent(MainActivity.this, MenuPrincipal.class);
                 startActivity(partida);
                 break;
         }

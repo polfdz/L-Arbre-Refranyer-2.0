@@ -17,6 +17,8 @@ import com.eroc.larbrerefranyer.larbreRefranyer.MainActivity;
 import com.eroc.larbrerefranyer.larbreRefranyer.dbRefranys.DatabaseModel;
 import com.eroc.larbrerefranyer.larbreRefranyer.dbRefranys.RefranyDBObject;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -31,11 +33,13 @@ public class PartidaTradicionalVides extends Activity implements PartidaTradicio
     ArrayList<Integer> refranysFets;
     List<RefranyDBObject> refranys;
 
-    TextView tPregunta, tVides;
+    TextView tPregunta, tVides, tPunts;
     Button bResposta1, bResposta2, bResposta3;
     View vArbreEvolucio,vLayoutAcert;
 
-    int progres, refranyActual; //numero de fuller acertades
+    SharedPreferences sPunts; //numero de fulles
+
+    int progres, refranyActual, puntsUsuari; //numero de fuller acertades
     String solucio; //solucio del refrany actual
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +61,12 @@ public class PartidaTradicionalVides extends Activity implements PartidaTradicio
         vides = 3;
 
         setLayout();
+
         refranys = getRefranys(nivell);
         Log.i("DEBUGER", "" + refranys.size());
         jugarPartida();
     }
+    @Override
     public void setLayout(){
         vArbreEvolucio = (View) findViewById(R.id.arbreEvolucio);
         vLayoutAcert = (View) findViewById(R.id.arbreAcert);
@@ -70,11 +76,15 @@ public class PartidaTradicionalVides extends Activity implements PartidaTradicio
         bResposta2 = (Button) findViewById(R.id.resposta2);
         bResposta3 = (Button) findViewById(R.id.resposta3);
         tVides = (TextView) findViewById(R.id.text_vides); progres = 0;
-        //test = (TextView) findViewById(R.id.test);
+        tPunts = (TextView) findViewById(R.id.punts);
 
         bResposta1.setOnClickListener(this);
         bResposta2.setOnClickListener(this);
         bResposta3.setOnClickListener(this);
+
+        sPunts = getSharedPreferences("Punts", 0);
+        puntsUsuari = sPunts.getInt("Punts", 0);
+        tPunts.setText("" + puntsUsuari);
 
     }
     @Override
@@ -163,7 +173,7 @@ public class PartidaTradicionalVides extends Activity implements PartidaTradicio
         Random rand = new Random();
         return randomNum = rand.nextInt((_max - _min) + 1) + _min;
     }
-
+    @Override
     public void tramitarFinalPartida(int _nivell, boolean _superat){
         if(_superat == true) //--> nivell superat
         {
@@ -183,6 +193,7 @@ public class PartidaTradicionalVides extends Activity implements PartidaTradicio
 
 
     }
+    @Override
     public void comprovarSolucio(String _boto){
         switch (_boto){
             case "resposta1":
@@ -208,6 +219,7 @@ public class PartidaTradicionalVides extends Activity implements PartidaTradicio
                 break;
         }
     }
+    @Override
     public void tramitarAcert() {
 
         refranysFets.add(refranyActual);
@@ -219,7 +231,7 @@ public class PartidaTradicionalVides extends Activity implements PartidaTradicio
         vArbreEvolucio.setBackgroundDrawable(drawable);
 
         vLayoutAcert.setBackgroundResource(R.drawable.nivell1_encert);
-
+        sumarPunts();
         if(refranysFets.size() == refranys.size()){
             tramitarFinalPartida(nivell, true); //nivell superat = true
         }else {
@@ -228,9 +240,11 @@ public class PartidaTradicionalVides extends Activity implements PartidaTradicio
 
     }
 
+    @Override
     public void tramitarError(){
         vides--;
-        tVides.setText(""+vides);
+        tVides.setText("" + vides);
+        restarPunts();
         vLayoutAcert.setBackgroundResource(R.drawable.nivell1_error);
         if(vides == 0){
             tramitarFinalPartida(nivell, false); //nivell superat = false
@@ -238,6 +252,40 @@ public class PartidaTradicionalVides extends Activity implements PartidaTradicio
         jugarPartida();
     }
 
+    @Override
+    public void sumarPunts(){
+        sPunts = getSharedPreferences("Punts", 0);
+        SharedPreferences.Editor editor = sPunts.edit();
+        puntsUsuari = sPunts.getInt("Punts", 0);
+        switch(nivell){
+            case 1:
+                puntsUsuari++;
+                break;
+            case 2:
+                puntsUsuari += 2;
+                break;
+        }
+        tPunts.setText("" + puntsUsuari);
+        editor.putInt("Punts", puntsUsuari);
+        editor.commit();
+    }
+    @Override
+    public void restarPunts(){
+        sPunts = getSharedPreferences("Punts", 0);
+        SharedPreferences.Editor editor = sPunts.edit();
+        puntsUsuari = sPunts.getInt("Punts", 0);
+        switch(nivell){
+            case 1:
+                puntsUsuari--;
+                break;
+            case 2:
+                puntsUsuari -= 2;
+                break;
+        }
+        tPunts.setText("" + puntsUsuari);
+        editor.putInt("Punts", puntsUsuari);
+        editor.commit();
+    }
     @Override
     public void onClick(View v) {
         switch(v.getId()) {
@@ -251,5 +299,10 @@ public class PartidaTradicionalVides extends Activity implements PartidaTradicio
                 comprovarSolucio("resposta3");
                 break;
         }
+    }
+    public void onBackPressed(){
+        Intent back = new Intent(this,MenuTradicional.class);
+        startActivity(back);
+        finish();
     }
 }

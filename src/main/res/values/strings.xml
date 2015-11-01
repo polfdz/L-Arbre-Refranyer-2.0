@@ -1,6 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">L\'Arbre Refranyer</string>
 
+    <!--  prod cuan es va a pujar al google play, per test cualsevol cosa-->
+    <string name="estat_aplicacio">prod</string>
+
+    <!-- <string name="id_device">D4D0059D8FEF70D0841C75C428B94496</string>  -->
+    <!--   <string name="id_device">BA32F496893A13CD52F8D9B087D2441B</string> -->
+    <!--<string name="id_device">214E434EB0C8A0DABFA31889CE663866</string>  -->
+    <!-- <string name="id_device">4AA6C6E8FC301301A4DD39EAF55C3DF0</string>  -->
+    <string name="id_device">prod</string>
+
+
+    <string name="app_name">L\'Arbre Refranyer</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_seleccio_nivells">SeleccioNivells</string>
+    <string name="title_activity_puntuacions">Puntuacions</string>
+    <string name="title_activity_final_tradicional">FinalTradicional</string>
+    <string name="title_activity_partida_tradicional__nivell1">PartidaTradicional_Nivell1</string>
+    <string name="title_activity_partida_tradicional_nivell1">PartidaTradicionalNivell1</string>
+    <string name="title_activity_partida_tradicional_nivell3">PartidaTradicionalNivell3</string>
+    <string name="title_activity_menu_versus">Menu Versus</string>
+
+    <!-- MENU PRINCIPAL -->
+    <string name="button_versus">Duel en línia</string>
+    <string name="button_partida">Partida tradicional</string>
+    <string name="button_biblio">Biblioteca</string>
+    <string name="button_perfil">Perfil</string>
+
+    <!-- MENU REGISTRAR -->
+
+    <string name="titol_menu_registrar">Menu Registrar</string>
+    <string name="username">Nom d´usuari</string>
+    <string name="email">Correu electrònic</string>
+    <string name="password">Contrasenya</string>
+    <string name="registrar">Registrar/Login</string>
+    <string name="loginfacebook">Login Facebook</string>
+
+    <!-- MENU VERSUS -->
+    <string name="titol_menu_versus">Menu Versus</string>
+
+    <!-- PENDENTS VERSUS -->
+    <string name="no_tens_pendents">No tens cap partida pendent</string>
+
+    <!-- NIVELL 1 -->
+
+
+    <!-- NIVELL 2 -->
+
+
+    <!-- NIVELL 3 -->
+    <string name="time_explic">Encerta els refranys abans que desapareixi la barra del temps!!</string>
+    <string name="bIni">Comencar!</string>
+
+    <!-- Biblioteca -->
+
+    <string name="biblioName">Biblioteca de Refranys</string>
+
+    <!-- Settings -->
+    <string name="reset_all">Resetejar nivells</string>
+    <string name="reset_explic">Perdre tots els refranys?</string>
+    <string name="reset_si">Si</string>
+    <string name="reset_no">No</string>
+    <string name="title_activity_biblioteca">Biblioteca</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_info">Info</string>
+    <string name="title_activity_partida_tradicional_nivell4">PartidaTradicionalNivell4</string>
+    <string name="title_activity_logo_inicial">LogoInicial</string>
+    <string name="title_activity_partida_tradicional_nivell5">PartidaTradicionalNivell5</string>
+    <string name="title_activity_partida_tradicional_nivell6">PartidaTradicionalNivell6</string>
+
+    <!-- Perfil -->
+    <string name="des_person">Desbloquejar personatges</string>
+    <string name="canviar_person">Canviar personatge?</string>
+    <string name="comprar_person">Comprar personatge?</string>
+    <string name="title_activity_refrany_dia">RefranyDia</string>
+    <string name="title_activity_instruccions">Instruccions</string>
+    <string name="historia1">Jugant a futbol</string>
+    <string name="historia2">Kriliiiiiiiiiiiiiin</string>
+    <string name="historia3">Shinosukee</string>
+
+    <!-- INSTRUCCIONS -->
+    <string name="back">Tornar</string>
+    <string name="title_activity_partida_versus">PartidaVersus</string>
+    <string name="title_activity_final_partida_versus">FinalPartidaVersus</string>
+    <string name="title_activity_partida_tradicional_nivell7">PartidaTradicionalNivell7</string>
+    <string name="title_activity_partida_tradicional_nivell8">PartidaTradicionalNivell8</string>
+    <string name="title_activity_partida_tradicional_nivell9">PartidaTradicionalNivell9</string>
+
 </resources>

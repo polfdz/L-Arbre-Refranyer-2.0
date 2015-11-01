@@ -16,12 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".larbreRefranyer.MenuPrincipal"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
 
         <activity
             android:name=".jocestatic.PartidaTradicionalVides"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
+
         <activity
             android:name=".jocestatic.MenuTradicional"
             android:label="@string/app_name"
